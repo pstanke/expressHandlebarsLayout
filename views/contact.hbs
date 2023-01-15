@@ -1,2 +1,39 @@
-<h2>Contact</h2>
-<p>Send me an email at programmer@example.com</p>
+<h2>Contact me</h2>
+
+{{#isSent}}
+  <div class='isSent'>The message has been sent! File
+    {{file}}
+    has been saved!</div>
+{{/isSent}}
+
+{{#isError}}
+  <div class='isError'>{{message}}</div>
+{{/isError}}
+
+<form
+  action='/contact/send-message'
+  enctype='multipart/form-data'
+  method='POST'
+>
+  <label>
+    Your name:
+    <input type='text' name='author' />
+  </label>
+  <label>
+    Your email:
+    <input type='email' name='sender' />
+  </label>
+  <label>
+    Title:
+    <input type='text' name='title' />
+  </label>
+  <label>
+    Message:
+    <textarea name='message'></textarea>
+  </label>
+  <label>
+    Project Design:
+    <input type='file' name='projectFile' />
+  </label>
+  <button type='submit'>Send message</button>
+</form>
